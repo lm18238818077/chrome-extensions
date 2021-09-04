@@ -1,0 +1,21 @@
+{
+  "name": "website ip",
+  "action": {},
+  "manifest_version": 3,
+  "version": "0.1",
+  "description": "show website remote address",
+  "permissions": [
+    "webRequest",
+    "webNavigation", 
+    "tabs",
+    "scripting",
+    "contextMenus",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "*://*/"
+  ]
+}
