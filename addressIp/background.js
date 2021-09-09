@@ -17,9 +17,7 @@ function reddenPage(ip) {
   }
 }
 
-
-
-chrome.webRequest.onCompleted.addListener(function(current){
+function handleScipt(current){
   chrome.scripting.executeScript({
     target: { tabId: current.tabId},
     function: reddenPage,
@@ -29,5 +27,14 @@ chrome.webRequest.onCompleted.addListener(function(current){
       target: {tabId: current.tabId},
       css: css,
   })
-},{urls: ["<all_urls>"],types:["main_frame"]});
+}
+
+
+
+
+chrome.webRequest.onCompleted.addListener(function(current1){
+  chrome.webNavigation.onCompleted.addListener(function(current2){
+    handleScipt(Object.assign({},current2,current1))
+  })
+},{urls: ["http://*/*","https://*/*"],types:["main_frame"]});
 

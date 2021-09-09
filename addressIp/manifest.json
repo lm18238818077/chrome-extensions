@@ -1,9 +1,12 @@
 {
   "name": "website ip",
-  "action": {},
   "manifest_version": 3,
   "version": "0.1",
   "description": "show website remote address",
+  "action": {
+    "default_title": "website ip",
+    "default_icon": "icon.png"
+  },
   "permissions": [
     "webRequest",
     "webNavigation", 
@@ -16,6 +19,8 @@
     "service_worker": "background.js"
   },
   "host_permissions": [
-    "*://*/"
+    "*://*/",
+    "http://*/*",
+    "https://*/*"
   ]
 }
